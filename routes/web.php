@@ -50,7 +50,7 @@ Route::get('/signup' , [SignupController::class , 'pageSignup'])->name('signup')
 Route::post('/signup-processing' , [SignupController::class , 'signupProcessing'])->name('signup-processing') ; // Chức năng đăng kí tài khoản ;
 Route::get('/forgot' , [ForgotController::class , 'pageForgot'])->name('forgot') ; // Trang quên mật khẩu ;
 Route::post('/forgot-processing' , [ForgotController::class , 'forgotProcessing'])->name('forgot-processing') ; // Chức năng lấy lại mật khẩu ;
-Route::get('/notification' , [ForgotController::class , 'notification'])->name('notification') ; // Trang thông báo đã gửi mật khẩu về mail ;
+//Route::get('/notification' , [ForgotController::class , 'notification'])->name('notification') ; // Trang thông báo đã gửi mật khẩu về mail ;
 
 // Route post-comment chính xác thì phải cần đưa vào danh sách những route cần đăng nhập mới dùng được tuy nhiên đã được check đăng nhập ở phần request rồi nên có thể để ngoài ;
 Route::post('/post-comment' , [CommentClientController::class , 'postComment'])->name('post-comment') ; // Chức năng bình luận của người dùng ;
@@ -72,11 +72,11 @@ Route::group(['middleware' => 'checkLogin'] , function() {
 // Route admin
 Route::group(['prefix' => 'admin' , 'middleware' => 'checkAdmin'] , function() {
     Route::get('/dashboard' , [DashboardController::class , 'dashboardController'])->name('dashboard') ; // Trang chủ phần quản trị ;
-    Route::resource('/hotels' , HotelController::class) ; // CRUD khách sạn ;
-    Route::resource('/room-types' , RoomTypeController::class) ; // CRUD loại phòng ;
-    Route::resource('/rooms' , RoomController::class) ; // CRUD phòng ;
-    Route::resource('/users' , UserController::class) ; // CRUD người dùng ;
-    Route::resource('/statuses' , StatusController::class) ; // CRUD trạng thái đặt phòng ;
+    Route::resource('/hotels' , HotelController::class)->except('show') ; // CRUD khách sạn ;
+    Route::resource('/room-types' , RoomTypeController::class)->except('show') ; // CRUD loại phòng ;
+    Route::resource('/rooms' , RoomController::class)->except('show') ; // CRUD phòng ;
+    Route::resource('/users' , UserController::class)->except('show') ; // CRUD người dùng ;
+    Route::resource('/statuses' , StatusController::class)->except('show') ; // CRUD trạng thái đặt phòng ;
 
     Route::get('/manager-ratings-all-hotel' , [RatingController::class , 'managerRatingAllHotelController'])->name('manager-ratings-all-hotel') ; // Quản lí đánh giá tất cả các khách sạn ;
     Route::get('/manager-ratings-hotel/{hotel_id}' , [RatingController::class , 'managerRatingHotelController'])->name('manager-ratings-hotel') ; // Quản lí đánh giá của một khách sạn ;

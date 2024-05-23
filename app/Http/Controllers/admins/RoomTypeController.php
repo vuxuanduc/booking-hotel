@@ -37,7 +37,7 @@ class RoomTypeController extends Controller
         return response()->json(['status' => 'success']) ;
     }
 
-    
+    // Đã xử lí except phương thức này ở route ;
     public function show(string $id)
     {
         //

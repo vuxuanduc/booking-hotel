@@ -14,6 +14,7 @@ class PayController extends Controller
         $this->pays = new Pay() ;
     }
 
+    // Lấy danh sách thanh toán ;
     public function listPays() {
 
         $title = "Danh sách thanh toán" ;

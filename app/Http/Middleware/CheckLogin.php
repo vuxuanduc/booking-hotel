@@ -14,6 +14,8 @@ class CheckLogin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
+
+    // Check xem người dùng đã đăng nhập hay  chưa ;
     public function handle(Request $request, Closure $next): Response
     {
         if(Auth::check()) {

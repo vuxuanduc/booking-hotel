@@ -14,6 +14,7 @@ class CommentController extends Controller
         $this->comments = new Comment() ;
     }
 
+    // Quản lí comment tất cả các khách sạn ;
     public function managerCommentAllHotelController() {
 
         $title = "Quản lí bình luận" ;
@@ -23,6 +24,7 @@ class CommentController extends Controller
         return view('admins.comments.manager_comment_all_hotel' , compact('title' , 'listCommentsAllHotel')) ;
     }
 
+    // Quản lí comment của từng khách sạn , ở đây người dùng có thể ẩn hoặc hiển thị lại bình luận tùy ý ;
     public function managerCommentHotelController(Request $request) {
 
         $hotelId = $request->hotel_id ;
@@ -34,6 +36,7 @@ class CommentController extends Controller
         return view('admins.comments.manager_comment_hotel' , compact('title' , 'listComments')) ;
     }
 
+    // Ẩn comment ;
     public function hiddenComment(Request $request) {
 
         $commentId = $request->comment_id;
@@ -43,6 +46,7 @@ class CommentController extends Controller
         return back();
     }
 
+    // Hiển thị comment bị ẩn ;
     public function showComment(Request $request) {
 
         $commentId = $request->comment_id;

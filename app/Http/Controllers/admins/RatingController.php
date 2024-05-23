@@ -14,6 +14,8 @@ class RatingController extends Controller
         $this->ratings = new Rating() ;
     }
 
+    // Tất cả phương thức trong controller này giống với CommentController phía trên ;
+
     public function managerRatingAllHotelController() {
 
         $title = "Quản lí đánh giá" ;

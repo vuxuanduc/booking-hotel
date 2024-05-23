@@ -57,7 +57,7 @@ class Rating extends Model
     }
 
     
-
+    // Danh sách đánh giá của mỗi khách sạn đổ ra trang quản lí đánh giá của khách sạn ;
     public function listRatingsAdmin($id) {
         return $this->select('ratings.id' , 'ratings.rating' , 'ratings.content_rating' , 'ratings.status' , 'ratings.date_rating' , 'users.email')
                     ->join('reservations' , 'ratings.reservation_id' , '=' , 'reservations.id')
@@ -69,11 +69,11 @@ class Rating extends Model
                     ->orderByDesc('ratings.rating')
                     ->paginate(10) ;
     }
-
+    // Ẩn đánh giá ;
     public function hiddenRating($rating_id) {
         return Rating::where('id' , $rating_id)->update(['status' => 2]) ;
     }
-
+    // Hiển thị đánh giá bị ẩn ;
     public function showRating($rating_id) {
         return Rating::where('id' , $rating_id)->update(['status' => 1]) ;
     }

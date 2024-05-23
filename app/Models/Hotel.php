@@ -32,14 +32,14 @@ class Hotel extends Model
     public function comments() {
         return $this->hasMany(Comment::class) ;
     }
-
+    // Lấy tất cả khách sạn đổ ra trang tất cả khách sạn ;
     public function getAllHotel() {
         return $this->select('hotels.id', 'hotels.name_hotel' , 'hotels.status' , DB::raw('(SELECT image_hotel FROM image_hotels WHERE hotel_id = hotels.id LIMIT 1) AS image_hotel'))
                     ->where('hotels.status' , '=' , 1)
                     ->orderBy('hotels.number_views', 'desc')
                     ->get();
     }
-    
+    // Top khách sạn có lượt xem cao nhất ;
     public function topViewHotel() {
         return $this->select('hotels.id', 'hotels.name_hotel' , 'hotels.status' , DB::raw('(SELECT image_hotel FROM image_hotels WHERE hotel_id = hotels.id LIMIT 1) AS image_hotel'))
                     ->where('hotels.status' , '=' , 1)
@@ -47,7 +47,7 @@ class Hotel extends Model
                     ->take(8)
                     ->get();
     }
-
+    // Top khách sạn có lượt đặt phòng cao nhất ;
     public function topBookings() {
         return $this->select('hotels.id' , 'hotels.name_hotel' , 'hotels.status' , DB::raw('(SELECT image_hotel FROM image_hotels WHERE hotel_id = hotels.id LIMIT 1) AS image_hotel') , DB::raw('COUNT(reservations.id) AS total_bookings'))
                     ->join('rooms' , 'hotels.id' , '=' , 'rooms.hotel_id')
@@ -59,6 +59,7 @@ class Hotel extends Model
                     ->get() ;
     }
 
+    // Chi tiết khách sạn ;
     public function hotelDetail($id) {
         return $this->select('hotels.id' , 'hotels.name_hotel' , 'hotels.address' , 'hotels.phone' , 'hotels.email' , 'hotels.status')
                     ->with('images')

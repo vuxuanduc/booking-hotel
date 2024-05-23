@@ -15,6 +15,8 @@ class ImageRoomController extends Controller
         $this->image_rooms = new ImageRoom() ;
     }
 
+    // Tất cả các phương thức trong controller này giống với ImageRoomController ;
+
     public function countImageRooms() {
 
         $title = "Quản lí ảnh phòng" ;

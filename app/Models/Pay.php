@@ -13,7 +13,7 @@ class Pay extends Model
         'reservation_id' ,
         'pay_info' ,
     ] ;
-
+    // Danh sách thanh toán ;
     public function listPays() {
         return $this->select('pays.id' , 'pays.reservation_id' , 'pays.pay_info' , 'reservations.total_amount' , 'users.email')
                     ->join('reservations' , 'reservations.id' , '=' , 'pays.reservation_id')

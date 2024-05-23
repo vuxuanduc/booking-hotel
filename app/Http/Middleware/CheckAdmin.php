@@ -14,6 +14,7 @@ class CheckAdmin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
+    // Check xem tài khoản có quyền truy cập trang admin hay không ;
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
@@ -24,6 +25,6 @@ class CheckAdmin
             }
         }
 
-        return redirect()->route('/') ;
+        return back() ;
     }
 }

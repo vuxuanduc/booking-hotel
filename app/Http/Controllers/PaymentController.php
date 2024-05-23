@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class PaymentController extends Controller
 {
+    // Thanh toán vnpay ;
     public function payVnPay(Request $request) {
         // Lấy thông tin đơn đặt phòng ;
 
@@ -86,7 +87,7 @@ class PaymentController extends Controller
     }
 
     
-
+    //  Thanh toán bằng momo ;
     // public function execPostRequest($url, $data)
     // {
     //     $ch = curl_init($url);

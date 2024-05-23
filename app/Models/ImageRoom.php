@@ -14,7 +14,7 @@ class ImageRoom extends Model
         'room_id' ,
         'image_room' ,
     ] ;
-
+    // Đếm số lượng ảnh đổ ra trang quản lí ảnh tất cả khách sạn ;
     public function countImageRooms() {
         return $this->select('rooms.id' , 'rooms.room_name' , DB::raw('count(*) as total_images'))
                     ->join('rooms' , 'rooms.id' , '=' , 'image_rooms.room_id')

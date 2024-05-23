@@ -37,7 +37,7 @@ class HotelController extends Controller
         return redirect()->route('hotels.index') ;
     }
 
-    
+    // Đã xử lí except ở route cho phương thức show ;
     public function show(string $id)
     {
         //

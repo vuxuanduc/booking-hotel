@@ -19,6 +19,9 @@ class ChartController extends Controller
 
     public function chartRevenue() {
 
+        // Phương thức này sẽ thống kê doanh thu tất cả các khách sạn từ trước tới nay ;
+        // Sẽ hiển thị mặc định khi vừa truy cập trang thống kê ;
+
         $title = "Thống kê doanh thu" ;
 
         $resultRevenue = $this->charts->chartRevenue("" , "") ;
@@ -33,10 +36,14 @@ class ChartController extends Controller
 
     public function resultRevenue(Request $request) {
 
+        // Phương thức này thống kê doanh thu của các khách sạn theo ngày , tháng hoặc năm ;
+
+        // Lấy loại thống kê người dùng chọn từ form ;
         $type = $request->type ;
 
         if($type == "day") {
-
+            
+            // Thời gian người dùng muốn thống kê ;
             $time = $request->day ;
 
             $resultRevenue = $this->charts->chartRevenue($type , $time) ;
@@ -45,7 +52,9 @@ class ChartController extends Controller
 
             return Redirect::route('chart-revenue')->with(['revenue' => $resultRevenue , 'title' => "Thống kê doanh thu ngày " .$format_time]) ;
         }else if ($type == "month") {
+            // Thống kê theo tháng ;
 
+            // Nếu tháng < 10 thêm một số 0 phía trước tháng ;
             if($request->month < 10) {
                 $month = 0 .$request->month ;
             }else {
@@ -75,6 +84,7 @@ class ChartController extends Controller
 
 
     // Thống kê tổng số lượt đặt phòng ;
+    // Các phần if else tương tự như phương thức trên ;
 
     public function chartBooking() {
 

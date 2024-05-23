@@ -17,6 +17,7 @@ class ReservationController extends Controller
         $this->reservations = new Reservation() ;
     }
 
+    // Quản lí danh sách đặt phòng ;
     public function listReservations() {
 
         $title = "Quản lí đặt phòng" ;
@@ -26,6 +27,7 @@ class ReservationController extends Controller
         return view('admins.reservations.manager_reservation' , compact('title' , 'listReservations')) ;
     }
 
+    // Xác nhận đơn đặt phòng ;
     public function confirmBooking(Request $request) {
 
         $reservation_id = $request->reservation_id ;

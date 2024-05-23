@@ -12,6 +12,8 @@ class CommentClientController extends Controller
 {
     public function postComment(CommentRequest $request) {
 
+        // Xử lí form request ở CommentRequest sau đó chuyển dữ liệu về phương thức này ;
+
         $user = User::where('email' , $request->email)->first() ;
 
         $data = $request->except('email') ;

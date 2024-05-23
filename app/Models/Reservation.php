@@ -21,7 +21,7 @@ class Reservation extends Model
         'price' ,
         'total_amount' ,
     ] ;
-
+    // Danh sách đặt phòng đổ ra trang quản lí đặt phòng ;
     public function reservations() {
         return $this->select('reservations.id' ,
                     'reservations.reservation_date' , 
