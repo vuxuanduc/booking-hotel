@@ -16,6 +16,7 @@ class Hotel extends Model
         'phone' ,
         'email' ,
         'number_views' ,
+        'description' ,
         'status' ,
     ] ;
 

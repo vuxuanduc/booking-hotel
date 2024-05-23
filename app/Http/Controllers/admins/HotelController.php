@@ -30,9 +30,9 @@ class HotelController extends Controller
    
     public function store(Request $request)
     {
-        $data = $request->except('_token') ;
+        $data = $request->all() ;
 
-        DB::table('hotels')->insert($data);
+        Hotel::query()->create($data) ;
 
         return redirect()->route('hotels.index') ;
     }
